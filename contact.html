@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | The System Architect</title>
+
+  <!-- Fonts and Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Playfair+Display&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1 class="header-title">THE SYSTEM ARCHITECT</h1>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="projects.html" class="nav-link">Projects</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="hero">
+      <h2 class="hero-title">Let's Talk</h2>
+      <p class="hero-subtitle">Have a project or idea? Reach out and let's build the future.</p>
+
+      <form id="contact-form" class="contact-form">
+        <div class="form-group">
+          <label for="from_name">Your Name</label>
+          <input type="text" id="from_name" name="from_name" placeholder="John Doe" required />
+        </div>
+
+        <div class="form-group">
+          <label for="from_email">Your Email</label>
+          <input type="email" id="from_email" name="from_email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" placeholder="Let's collaborate..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-send">Send Message</button>
+        <p id="form-status" class="form-status"></p>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p class="footer-text">&copy; 2025 Kelvin Charles Chacha. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://github.com/kelvinchacha" target="_blank" aria-label="GitHub" class="social-link">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://linkedin.com/in/KELVINCHACHA" target="_blank" aria-label="LinkedIn" class="social-link">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:kelvincharleschacha07@gmail.com" class="social-link" aria-label="Email">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+        <a href="https://instagram.com/kelv.chacha" target="_blank" aria-label="Instagram" class="social-link">
+          <i class="fab fa-instagram"></i> IG
+        </a>
+        <a href="https://facebook.com/KelvinChacha" target="_blank" aria-label="Facebook" class="social-link">
+          <i class="fab fa-facebook"></i> Facebook
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
