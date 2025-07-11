@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   // === 1. NAV ACTIVE LINK ===
   const links = document.querySelectorAll('.nav-link');
-  const current = location.pathname.split('/').pop() || 'index.html';
+  const path = window.location.pathname;
+  const current = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
 
   links.forEach(link => {
     if (link.getAttribute('href') === current) {
@@ -48,16 +49,14 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, {
-    threshold: 0.2
-  });
+  }, { threshold: 0.2 });
 
   fadeIns.forEach(el => {
     gsap.set(el, { opacity: 0, y: 20 });
     observer.observe(el);
   });
 
-  // === 4. CONTACT MODAL (Optional if used) ===
+  // === 4. CONTACT MODAL (Optional) ===
   const modalBtn = document.querySelector('.contact-popup-btn');
   const modal = document.querySelector('.contact-modal');
   const modalClose = document.querySelector('.modal-close');
@@ -83,34 +82,26 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-});
 
-// Initialize EmailJS
-  emailjs.init("009rC0wl7-OsGSgdl");
+  // === 5. EMAILJS CONTACT FORM ===
+  if (typeof emailjs !== 'undefined' && document.getElementById('contact-form')) {
+    emailjs.init("009rC0wl7-OsGSgdl");
 
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('form-status');
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    status.textContent = "Sending...";
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.textContent = "Sending...";
 
-    emailjs.sendForm('service_39h4wuf', 'template_b7ifxxm', this)
-      .then(() => {
-        status.textContent = "✅ Message sent successfully!";
-        form.reset();
-      }, (err) => {
-        console.error(err);
-        status.textContent = "❌ Failed to send message. Try again.";
-      });
-  });
-
-  // Nav active link highlight
-  const links = document.querySelectorAll('.nav-link');
-  const current = location.pathname.split('/').pop() || 'index.html';
-  links.forEach(link => {
-    if (link.getAttribute('href') === current) {
-      link.classList.add('active');
-    }
-  });
+      emailjs.sendForm('service_39h4wuf', 'template_b7ifxxm', this)
+        .then(() => {
+          status.textContent = "✅ Message sent successfully!";
+          form.reset();
+        }, (err) => {
+          console.error(err);
+          status.textContent = "❌ Failed to send message. Try again.";
+        });
+    });
+  }
 });
